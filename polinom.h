@@ -356,16 +356,9 @@ void polinom :: rezolv(double valoare, double solutie[], int &nrSolutii)
         return;
     }
 
-    if (get_gradPolinom() == 1)
-    {
-        coeficient[get_gradPolinom()] += valoare;
-        solutie[++nrSolutii] = coeficient[get_gradPolinom()] - valoare;
-        return;
-    }
-
     for (double i = -100000; i <= 100000; i += 1)
     {
-        if (abs(f_de_x(i / 100)) <= 0.0000000000000001)
+        if (abs(f_de_x(i / 100)) <= 0.001)
             solutie[++nrSolutii] = i / 100;
     }
 
@@ -385,16 +378,9 @@ void polinom :: rezolv_derivata(double valoare, double solutie[], int &nrSolutii
         return;
     }
 
-    if (get_gradPolinom() - 1 == 1)
-    {
-        coeficient_derivare[get_gradPolinom() - 1] += valoare;
-        solutie[++nrSolutii] = get_gradPolinom() - 1 - valoare;
-        return;
-    }
-
     for (double i = -100000; i <= 100000; i += 1)
     {
-        if (abs(f_de_x_derivat(i / 100)) <= 0.0000000000000001)
+        if (abs(f_de_x_derivat(i / 100)) <= 0.001)
             solutie[++nrSolutii] = i / 100;
     }
 
